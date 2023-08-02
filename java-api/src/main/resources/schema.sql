@@ -12,7 +12,7 @@ CREATE TABLE clients (
     client_id INT AUTO_INCREMENT PRIMARY KEY,
     bond_holder VARCHAR(250) NOT NULL,
     issuer_id INT,
-    FOREIGN KEY (client_id) REFERENCES issuers(issuer_id)
+    FOREIGN KEY (issuer_id) REFERENCES issuers(issuer_id)
 );
 
 CREATE TABLE books (
