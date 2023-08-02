@@ -9,9 +9,9 @@ VALUES ('BNPParibasIssu 4,37% Microsoft Corp (USD)'),
 
 
 INSERT INTO BOOKS (book_name, user_id)
-VALUES ('trading_book_1', 1),
-('trading_book_2', 1),
-('trading_book_3', 1),
-('trading_book_4', 1),
-('trading_book_5', 1),
-('trading_book_6', 1);
+VALUES ('Trading_book_1', 1),
+('Trading_book_2', 2),
+('Trading_book_3', 3),
+('Trading_book_4', 4),
+('Trading_book_5', 5),
+('Trading_book_6', 6);
