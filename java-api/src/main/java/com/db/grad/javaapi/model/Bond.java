@@ -42,9 +42,15 @@ public class Bond {
     @Column(name = "trade_settlement_date", nullable = false)
     private Date tradeSettlementDate;
 
+
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "client_id")
     private Client client;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "book_id", referencedColumnName = "book_id")
+    private Book book;
 
     public Bond(){}
 
