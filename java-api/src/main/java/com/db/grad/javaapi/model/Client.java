@@ -1,5 +1,7 @@
 package com.db.grad.javaapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -23,6 +25,7 @@ public class Client {
     private Issuer issuer;
 
     @OneToMany(mappedBy = "client")
+    @JsonIgnore
     public List<Bond> bonds = new ArrayList<>();
 
     public Client() {
