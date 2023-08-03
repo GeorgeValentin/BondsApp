@@ -1,5 +1,7 @@
 package com.db.grad.javaapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -17,15 +19,15 @@ public class Issuer {
     private String issuerName;
 
     @OneToMany(mappedBy = "issuer")
+    @JsonIgnore
     private Set<Client> clients = new HashSet<>();
 
     public Issuer() {
     }
 
-    public Issuer(int issuerId, String issuerName, Set<Client> clients) {
+    public Issuer(int issuerId, String issuerName) {
         this.issuerId = issuerId;
         this.issuerName = issuerName;
-        this.clients = clients;
     }
 
     @Override

@@ -42,7 +42,7 @@ public class Bond {
     @Column(name = "trade_settlement_date", nullable = false)
     private Date tradeSettlementDate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "client_id")
     private Client client;
 

@@ -1,11 +1,16 @@
 package com.db.grad.javaapi.service;
 
 import com.db.grad.javaapi.model.Bond;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 public interface IBondService {
     public List<Bond> getAllBonds();
+
+    List<Bond> getActiveBonds();
+
+    List<Bond> getInactiveBonds();
 
     public Bond addBond(Bond bond);
 
