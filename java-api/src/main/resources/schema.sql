@@ -1,7 +1,7 @@
 -- DROP TABLE IF EXISTS issuers;
 -- DROP TABLE IF EXISTS clients;
 -- DROP TABLE IF EXISTS books;
--- DROP TABLE IF EXISTS bonds;
+--DROP TABLE IF EXISTS bonds;
 
 CREATE TABLE if not exists issuers (
     issuer_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -20,6 +20,12 @@ CREATE TABLE if not exists books (
     book_name VARCHAR(250) NOT NULL
 );
 
+CREATE TABLE if not exists users(
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_email VARCHAR(250) NOT NULL
+);
+
+
 CREATE TABLE if not exists bonds (
     bond_id INT AUTO_INCREMENT PRIMARY KEY,
     cusip VARCHAR(250) NOT NULL,
@@ -33,7 +39,9 @@ CREATE TABLE if not exists bonds (
     is_active BOOLEAN NOT NULL,
     trade_settlement_date DATE NOT NULL,
     client_id INT,
-    FOREIGN KEY (client_id) REFERENCES clients(client_id)
+    FOREIGN KEY (client_id) REFERENCES clients(client_id),
+    book_id INT,
+    FOREIGN KEY (book_id) REFERENCES books(book_id)
 );
 
 /*
