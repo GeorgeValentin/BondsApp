@@ -33,7 +33,7 @@ CREATE TABLE bonds (
     is_active BOOLEAN NOT NULL,
     trade_settlement_date DATE NOT NULL,
     client_id INT,
-    FOREIGN KEY (bond_id) REFERENCES clients(client_id)
+    FOREIGN KEY (client_id) REFERENCES clients(client_id)
 );
 
 /*
