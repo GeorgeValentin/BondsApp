@@ -12,6 +12,8 @@ public interface IBondService {
 
     List<Bond> getInactiveBonds();
 
+    List<Bond> getBondsInMaturityTimeframe();
+
     public Bond addBond(Bond bond);
 
     public long getNoOfBonds();
