@@ -46,8 +46,131 @@ public class Bond {
     @JoinColumn(name = "client_id")
     private Client client;
 
-    // Constructors, getters, setters, and other methods (if required) go here.
+    public Bond(int bondId, String cusip, String isin, int faceValue, Date bondMaturityDate, float couponPercent, String bondCurrency, String bondType, String redemptionStatus, boolean isActive, Date tradeSettlementDate) {
+        this.bondId = bondId;
+        this.cusip = cusip;
+        this.isin = isin;
+        this.faceValue = faceValue;
+        this.bondMaturityDate = bondMaturityDate;
+        this.couponPercent = couponPercent;
+        this.bondCurrency = bondCurrency;
+        this.bondType = bondType;
+        this.redemptionStatus = redemptionStatus;
+        this.isActive = isActive;
+        this.tradeSettlementDate = tradeSettlementDate;
+    }
 
-    // You may add additional annotations or constraints as needed for your application.
+    public int getBondId() {
+        return bondId;
+    }
+
+    public void setBondId(int bondId) {
+        this.bondId = bondId;
+    }
+
+    public String getCusip() {
+        return cusip;
+    }
+
+    public void setCusip(String cusip) {
+        this.cusip = cusip;
+    }
+
+    public String getIsin() {
+        return isin;
+    }
+
+    public void setIsin(String isin) {
+        this.isin = isin;
+    }
+
+    public int getFaceValue() {
+        return faceValue;
+    }
+
+    public void setFaceValue(int faceValue) {
+        this.faceValue = faceValue;
+    }
+
+    public Date getBondMaturityDate() {
+        return bondMaturityDate;
+    }
+
+    public void setBondMaturityDate(Date bondMaturityDate) {
+        this.bondMaturityDate = bondMaturityDate;
+    }
+
+    public float getCouponPercent() {
+        return couponPercent;
+    }
+
+    public void setCouponPercent(float couponPercent) {
+        this.couponPercent = couponPercent;
+    }
+
+    public String getBondCurrency() {
+        return bondCurrency;
+    }
+
+    public void setBondCurrency(String bondCurrency) {
+        this.bondCurrency = bondCurrency;
+    }
+
+    public String getBondType() {
+        return bondType;
+    }
+
+    public void setBondType(String bondType) {
+        this.bondType = bondType;
+    }
+
+    public String getRedemptionStatus() {
+        return redemptionStatus;
+    }
+
+    public void setRedemptionStatus(String redemptionStatus) {
+        this.redemptionStatus = redemptionStatus;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
+    }
+
+    public Date getTradeSettlementDate() {
+        return tradeSettlementDate;
+    }
+
+    public void setTradeSettlementDate(Date tradeSettlementDate) {
+        this.tradeSettlementDate = tradeSettlementDate;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    @Override
+    public String toString() {
+        return "Bond{" +
+                "bondId=" + bondId +
+                ", cusip='" + cusip + '\'' +
+                ", isin='" + isin + '\'' +
+                ", faceValue=" + faceValue +
+                ", bondMaturityDate=" + bondMaturityDate +
+                ", couponPercent=" + couponPercent +
+                ", bondCurrency='" + bondCurrency + '\'' +
+                ", bondType='" + bondType + '\'' +
+                ", redemptionStatus='" + redemptionStatus + '\'' +
+                ", isActive=" + isActive +
+                ", tradeSettlementDate=" + tradeSettlementDate +
+                '}';
+    }
 }
 
