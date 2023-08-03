@@ -20,6 +20,10 @@ public class Book {
     @JsonIgnore
     private Set<Bond> bonds = new HashSet<>();
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
+    private User user;
+
     public Book(){}
 
     public Book(int bookId, String bookName) {
