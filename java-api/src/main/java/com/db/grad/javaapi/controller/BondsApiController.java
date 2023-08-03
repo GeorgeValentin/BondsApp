@@ -1,5 +1,6 @@
 package com.db.grad.javaapi.controller;
 
+import com.db.grad.javaapi.dtos.BondCardDataDto;
 import com.db.grad.javaapi.model.Bond;
 import com.db.grad.javaapi.service.BondService;
 import org.apache.logging.log4j.LogManager;
@@ -22,22 +23,13 @@ public class BondsApiController {
     private BondService bondService;
 
     @GetMapping("/bonds")
-    public ResponseEntity<List<Bond>> getBonds(
-            @RequestParam(required = false, name = "active")  String isActive
-    ) {
-        List<Bond> bonds = new ArrayList<>();
+    public ResponseEntity<List<BondCardDataDto>> getBonds() {
+        List<BondCardDataDto> bonds = bondService.getAllBonds();
 
-        if (isActive == null) {
-            logger.info("No active request param is provided. Returning all bonds");
-            bonds = bondService.getAllBonds();
+        if(bonds.size() == 0) {
+            logger.info("There are no bonds present! Returning an empty list!");
         } else {
-            if ("true".equalsIgnoreCase(isActive)) {
-                logger.info("No active request param is provided. Returning active bonds");
-                bonds = bondService.getActiveBonds();
-            } else if ("false".equalsIgnoreCase(isActive)) {
-                logger.info("No active request param is provided. Returning inactive bonds");
-                bonds = bondService.getInactiveBonds();
-            }
+            logger.info("There are" + bonds.size() + " bonds present! Returning the list containing them!");
         }
 
         return ResponseEntity.ok().body(bonds);
