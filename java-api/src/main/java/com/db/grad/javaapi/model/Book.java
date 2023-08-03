@@ -1,6 +1,10 @@
 package com.db.grad.javaapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "books")
@@ -11,6 +15,10 @@ public class Book {
     private int bookId;
     @Column(name = "book_name")
     private String bookName;
+
+    @OneToMany(mappedBy = "book")
+    @JsonIgnore
+    private Set<Bond> bonds = new HashSet<>();
 
     public Book(){}
 
