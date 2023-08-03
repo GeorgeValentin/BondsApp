@@ -1,6 +1,10 @@
 package com.db.grad.javaapi.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "clients")
@@ -17,6 +21,9 @@ public class Client {
     @ManyToOne
     @JoinColumn(name = "issuer_id", referencedColumnName = "issuer_id")
     private Issuer issuer;
+
+    @OneToMany(mappedBy = "bonds")
+    public List<Bond> bonds = new ArrayList<>();
 
     public Client() {
 
