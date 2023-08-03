@@ -7,13 +7,18 @@ VALUES ('BNPParibasIssu 4,37% Microsoft Corp (USD)'),
 ('TEMASEK FINL I LTD GLOBAL MEDIUM TERM NTS BOOK ENTRY REG S'),
 ('First Norway Alpha Kl.IV');
 
-INSERT INTO BOOKS (book_name)
-VALUES ('Trading_book_1'),
-('Trading_book_2'),
-('Trading_book_3'),
-('Trading_book_4'),
-('Trading_book_5'),
-('Trading_book_6');
+INSERT INTO users (user_email)
+VALUES
+('user1@gmail.com'),
+('user2@gmail.com');
+
+INSERT INTO BOOKS (book_name, user_id)
+VALUES ('Trading_book_1', 1),
+('Trading_book_2', 1),
+('Trading_book_3', 1),
+('Trading_book_4', 2),
+('Trading_book_5', 2),
+('Trading_book_6', 2);
 
 INSERT INTO clients (bond_holder, issuer_id)
 VALUES
@@ -30,11 +35,6 @@ VALUES
 ('Pension Holdings', 5),
 ('Zurich Pension fund 4', 6),
 ('Zurich Pension fund 4', 7);
-
-INSERT INTO users (user_email)
-VALUES
-('user1@gmail.com'),
-('user2@gmail.com');
 
 INSERT INTO BONDS (
     cusip,
