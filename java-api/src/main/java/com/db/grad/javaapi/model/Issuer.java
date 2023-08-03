@@ -16,7 +16,7 @@ public class Issuer {
     @Column(name = "issuer_name")
     private String issuerName;
 
-    @OneToMany(mappedBy = "issuers")
+    @OneToMany(mappedBy = "issuer")
     private Set<Client> clients = new HashSet<>();
 
     public Issuer() {

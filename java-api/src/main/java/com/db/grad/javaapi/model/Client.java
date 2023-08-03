@@ -22,7 +22,7 @@ public class Client {
     @JoinColumn(name = "issuer_id", referencedColumnName = "issuer_id")
     private Issuer issuer;
 
-    @OneToMany(mappedBy = "bonds")
+    @OneToMany(mappedBy = "client")
     public List<Bond> bonds = new ArrayList<>();
 
     public Client() {

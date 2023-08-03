@@ -1,26 +1,26 @@
-DROP TABLE IF EXISTS issuers;
-DROP TABLE IF EXISTS clients;
-DROP TABLE IF EXISTS books;
-DROP TABLE IF EXISTS bonds;
+-- DROP TABLE IF EXISTS issuers;
+-- DROP TABLE IF EXISTS clients;
+-- DROP TABLE IF EXISTS books;
+-- DROP TABLE IF EXISTS bonds;
 
-CREATE TABLE issuers (
+CREATE TABLE if not exists issuers (
     issuer_id INT AUTO_INCREMENT PRIMARY KEY,
     issuer_name VARCHAR(250) NOT NULL
 );
 
-CREATE TABLE clients (
+CREATE TABLE if not exists clients (
     client_id INT AUTO_INCREMENT PRIMARY KEY,
     bond_holder VARCHAR(250) NOT NULL,
     issuer_id INT,
     FOREIGN KEY (issuer_id) REFERENCES issuers(issuer_id)
 );
 
-CREATE TABLE books (
+CREATE TABLE if not exists books (
     book_id INT AUTO_INCREMENT PRIMARY KEY,
     book_name VARCHAR(250) NOT NULL
 );
 
-CREATE TABLE bonds (
+CREATE TABLE if not exists bonds (
     bond_id INT AUTO_INCREMENT PRIMARY KEY,
     cusip VARCHAR(250) NOT NULL,
     isin VArCHAR(250) NOT NULL,
