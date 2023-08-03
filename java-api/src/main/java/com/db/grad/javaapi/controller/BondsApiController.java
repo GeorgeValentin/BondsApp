@@ -21,6 +21,11 @@ public class BondsApiController {
     @Autowired
     private BondService bondService;
 
+    @GetMapping("/activeBonds")
+    public ResponseEntity<List<Bond>> getActiveBonds() {
+        return ResponseEntity.ok().body(bondService.getActiveBonds());
+    }
+
     @GetMapping("/bonds")
     public ResponseEntity<List<Bond>> getBonds(
             @RequestParam(required = false, name = "active")  String isActive
