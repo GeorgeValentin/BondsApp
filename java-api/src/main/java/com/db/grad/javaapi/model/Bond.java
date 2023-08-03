@@ -46,6 +46,8 @@ public class Bond {
     @JoinColumn(name = "client_id")
     private Client client;
 
+    public Bond(){}
+
     public Bond(int bondId, String cusip, String isin, int faceValue, Date bondMaturityDate, float couponPercent, String bondCurrency, String bondType, String redemptionStatus, boolean isActive, Date tradeSettlementDate) {
         this.bondId = bondId;
         this.cusip = cusip;

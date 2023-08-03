@@ -10,40 +10,47 @@ public class Issuer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int issuer_id;
+    @Column(name = "issuer_id")
+    private int issuerId;
 
-    private String issuer_name;
+    @Column(name = "issuer_name")
+    private String issuerName;
 
     @OneToMany(mappedBy = "issuers")
     private Set<Client> clients = new HashSet<>();
 
     public Issuer() {
     }
-    public Issuer(int issuer_id, String issuer_name) {
-        this.issuer_id = issuer_id;
-        this.issuer_name = issuer_name;
-    }
 
-    public Issuer(int issuer_id, String issuer_name, Set<Client> clients) {
-        this.issuer_id = issuer_id;
-        this.issuer_name = issuer_name;
+    public Issuer(int issuerId, String issuerName, Set<Client> clients) {
+        this.issuerId = issuerId;
+        this.issuerName = issuerName;
         this.clients = clients;
     }
 
-    public int getIssuer_id() {
-        return issuer_id;
+    @Override
+    public String toString() {
+        return "Issuer{" +
+                "issuerId=" + issuerId +
+                ", issuerName='" + issuerName + '\'' +
+                ", clients=" + clients +
+                '}';
     }
 
-    public void setIssuer_id(int issuer_id) {
-        this.issuer_id = issuer_id;
+    public int getIssuerId() {
+        return issuerId;
     }
 
-    public String getIssuer_name() {
-        return issuer_name;
+    public void setIssuerId(int issuerId) {
+        this.issuerId = issuerId;
     }
 
-    public void setIssuer_name(String issuer_name) {
-        this.issuer_name = issuer_name;
+    public String getIssuerName() {
+        return issuerName;
+    }
+
+    public void setIssuerName(String issuerName) {
+        this.issuerName = issuerName;
     }
 
     public Set<Client> getClients() {
@@ -52,15 +59,6 @@ public class Issuer {
 
     public void setClients(Set<Client> clients) {
         this.clients = clients;
-    }
-
-    @Override
-    public String toString() {
-        return "Issuer{" +
-                "issuer_id=" + issuer_id +
-                ", issuer_name='" + issuer_name + '\'' +
-                ", clients=" + clients +
-                '}';
     }
 }
 
