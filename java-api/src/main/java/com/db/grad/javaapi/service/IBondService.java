@@ -1,5 +1,6 @@
 package com.db.grad.javaapi.service;
 
+import com.db.grad.javaapi.dtos.BondCardDataDto;
 import com.db.grad.javaapi.model.Bond;
 import org.springframework.stereotype.Service;
 
@@ -7,11 +8,12 @@ import java.util.List;
 import java.util.Optional;
 
 public interface IBondService {
-    public List<Bond> getAllBonds();
-
+    public List<BondCardDataDto> getAllBonds();
     List<Bond> getActiveBonds();
 
     List<Bond> getInactiveBonds();
+
+    List<BondCardDataDto> getBondsInMaturityTimeframe();
 
     public Bond addBond(Bond bond);
 

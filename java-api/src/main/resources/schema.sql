@@ -1,6 +1,6 @@
 -- DROP TABLE IF EXISTS issuers;
 -- DROP TABLE IF EXISTS clients;
--- DROP TABLE IF EXISTS books;
+--DROP TABLE IF EXISTS books;
 --DROP TABLE IF EXISTS bonds;
 
 CREATE TABLE if not exists issuers (
@@ -15,16 +15,17 @@ CREATE TABLE if not exists clients (
     FOREIGN KEY (issuer_id) REFERENCES issuers(issuer_id)
 );
 
-CREATE TABLE if not exists books (
-    book_id INT AUTO_INCREMENT PRIMARY KEY,
-    book_name VARCHAR(250) NOT NULL
-);
-
 CREATE TABLE if not exists users(
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     user_email VARCHAR(250) NOT NULL
 );
 
+CREATE TABLE if not exists books (
+    book_id INT AUTO_INCREMENT PRIMARY KEY,
+    book_name VARCHAR(250) NOT NULL,
+    user_id INT,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
 
 CREATE TABLE if not exists bonds (
     bond_id INT AUTO_INCREMENT PRIMARY KEY,
