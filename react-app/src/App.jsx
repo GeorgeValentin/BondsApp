@@ -2,6 +2,8 @@ import React, { Fragment } from 'react';
 import BondsPage from './components/bonds/bonds-page/BondsPage';
 import { Route, Routes } from 'react-router-dom';
 
+import './App.css';
+
 const App = () => {
   return (
     <Fragment>
