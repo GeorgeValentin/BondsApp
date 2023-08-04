@@ -1,10 +1,17 @@
 package com.db.grad.javaapi.service;
+
 import com.db.grad.javaapi.dtos.BondCardDataDto;
+import com.db.grad.javaapi.dtos.Credentials;
+import com.db.grad.javaapi.exception.InvalidUserException;
+import com.db.grad.javaapi.exception.UserAlreadyExistsException;
+import com.db.grad.javaapi.exception.UserDoesNotExistException;
 import com.db.grad.javaapi.model.Bond;
 import com.db.grad.javaapi.model.Book;
+import com.db.grad.javaapi.model.User;
 import com.db.grad.javaapi.repository.BondsRepository;
 import com.db.grad.javaapi.repository.BooksRepository;
 import com.db.grad.javaapi.repository.UsersRepository;
+import org.h2.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,13 +19,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
-import com.db.grad.javaapi.dtos.Credentials;
-import com.db.grad.javaapi.exception.InvalidUserException;
-import com.db.grad.javaapi.exception.UserAlreadyExistsException;
-import com.db.grad.javaapi.exception.UserDoesNotExistException;
-import com.db.grad.javaapi.model.User;
-import org.h2.util.StringUtils;
 
 @Service
 public class UserService implements IUserService{
