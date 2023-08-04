@@ -28,6 +28,10 @@ public class User {
         this.userEmail = userEmail;
     }
 
+    public User(String userEmail) {
+        this.userEmail = userEmail;
+    }
+
     public int getUserId() {
         return userId;
     }
