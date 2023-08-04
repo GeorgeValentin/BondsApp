@@ -8,7 +8,6 @@ import com.db.grad.javaapi.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -19,11 +18,7 @@ import com.db.grad.javaapi.exception.InvalidUserException;
 import com.db.grad.javaapi.exception.UserAlreadyExistsException;
 import com.db.grad.javaapi.exception.UserDoesNotExistException;
 import com.db.grad.javaapi.model.User;
-import com.db.grad.javaapi.repository.UserRepository;
 import org.h2.util.StringUtils;
-
-import static com.db.grad.javaapi.constants.Constants.MATURITY_TIMEFRAME_IN_DAYS;
-import static com.db.grad.javaapi.constants.Constants.WEEKEND_DAYS;
 
 @Service
 public class UserService implements IUserService{
@@ -63,7 +58,7 @@ public class UserService implements IUserService{
       }
       
       public boolean isUserAlreadyRegistered(String email) {
-        return userRepository.existsByUserEmail(email);
+        return usersRepository.existsByUserEmail(email);
     }
 
     private boolean isUserDataInvalid(Credentials userToSave) {
@@ -82,7 +77,7 @@ public class UserService implements IUserService{
         }
 
         User savedUser = new User(userToSave.getEmail(), userToSave.getPassword());
-        userRepository.save(savedUser);
+        usersRepository.save(savedUser);
 
         return savedUser;
     }
@@ -93,7 +88,7 @@ public class UserService implements IUserService{
             throw new UserDoesNotExistException("Register first.");
         }
 
-        User existingUser = userRepository.getUserByUserEmail(credentials.getEmail());
+        User existingUser = usersRepository.getUserByUserEmail(credentials.getEmail());
 
         if (existingUser.getPassword().equals(credentials.getPassword())) {
             return existingUser;
