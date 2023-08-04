@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static com.db.grad.javaapi.constants.Constants.MATURITY_TIMEFRAME_IN_DAYS;
@@ -65,4 +66,10 @@ public class BondService implements IBondService {
     public long getNoOfBonds() {
         return 0;
     }
+
+    @Override
+    public Optional<Bond> getBondsById(int uniqueId) {
+        return bondsRepository.findById(uniqueId);
+    }
+
 }

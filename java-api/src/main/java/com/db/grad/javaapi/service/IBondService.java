@@ -5,6 +5,7 @@ import com.db.grad.javaapi.model.Bond;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface IBondService {
     public List<BondCardDataDto> getAllBonds();
@@ -17,6 +18,8 @@ public interface IBondService {
     public Bond addBond(Bond bond);
 
     public long getNoOfBonds();
+
+    public Optional getBondsById(int uniqueId);
 
 //    public boolean removeBond(long uniqueId);
 //

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
@@ -38,6 +39,14 @@ public class BondsApiController {
         }
 
         return ResponseEntity.ok().body(bonds);
+    }
+
+    @GetMapping("/bonds/{id}")
+    public ResponseEntity getBondsById(@PathVariable(value = "id") Integer id) {
+        Optional result = bondService.getBondsById(id);
+        if (result.isPresent()) {
+            return ResponseEntity.ok().body(result.get());
+        }return ResponseEntity.notFound().build();
     }
 
     @GetMapping("/bonds/maturity")
