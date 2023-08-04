@@ -41,7 +41,7 @@ public class BondsApiController {
     }
 
     @GetMapping("/bonds/maturity")
-    public ResponseEntity<List<Bond>> getBondsInMaturityTimeframe() {
+    public ResponseEntity<List<BondCardDataDto>> getBondsInMaturityTimeframe() {
         logger.info("BondsApiController::Retrieving bonds in the default maturity timeframe.");
         return ResponseEntity.ok().body(bondService.getBondsInMaturityTimeframe());
     }

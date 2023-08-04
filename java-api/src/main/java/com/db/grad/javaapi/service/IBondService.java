@@ -12,7 +12,7 @@ public interface IBondService {
 
     List<Bond> getInactiveBonds();
 
-    List<Bond> getBondsInMaturityTimeframe();
+    List<BondCardDataDto> getBondsInMaturityTimeframe();
 
     public Bond addBond(Bond bond);
 
