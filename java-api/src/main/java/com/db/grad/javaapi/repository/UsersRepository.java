@@ -19,7 +19,6 @@ public interface UsersRepository extends JpaRepository<User, Integer> {
     @Query(value = "SELECT * FROM Books b WHERE b.user_id = ?1", nativeQuery = true)
     List<Book> findBooksByUserID(int userId);
 
-    @Query(value = "SELECT * FROM Bonds WHERE book_id = ?1", nativeQuery = true)
-    List<Bond> findBondsbyBookIDForUser(int bookId);
+
 
 }

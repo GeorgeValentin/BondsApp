@@ -4,6 +4,7 @@ import com.db.grad.javaapi.dtos.BondCardDataDto;
 import com.db.grad.javaapi.model.Bond;
 import com.db.grad.javaapi.model.Book;
 import com.db.grad.javaapi.repository.BondsRepository;
+import com.db.grad.javaapi.repository.BooksRepository;
 import com.db.grad.javaapi.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,20 +24,26 @@ public class UserService implements IUserService{
     @Autowired
     private UsersRepository usersRepository;
 
+    @Autowired
+    private BooksRepository booksRepository;
+
+    @Autowired
+    private BondsRepository bondsRepository;
+
     public Optional<List<String>> getBooksNamesforUserID(int user_id) {
         return usersRepository.findBooksNamesByUserID(user_id);
     }
 
-    public List<Book> getBooksforUserID(int user_id) {
-        return usersRepository.findBooksByUserID(user_id);
+    public List<Book> getBooksForUserID(int user_id) {
+        return booksRepository.findBooksByUserId(user_id);
     }
 
     public List<BondCardDataDto> getBondsInSpecificBookForUser(int user_id, String book_name) {
-        List<Book> books = getBooksforUserID(user_id);
+        List<Book> books = getBooksForUserID(user_id);
         List<Bond> bonds = new ArrayList<Bond>();
         for (Book book:books){
             if (book.getBookName().equals(book_name)){
-                bonds = usersRepository.findBondsbyBookIDForUser(book.getBookId());
+                bonds = bondsRepository.findBondsbyBookIDForUser(book.getBookId());
                 break;
             }
         }

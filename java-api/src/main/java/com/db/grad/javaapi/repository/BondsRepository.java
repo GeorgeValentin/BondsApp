@@ -17,4 +17,7 @@ public interface BondsRepository extends JpaRepository<Bond, Integer> {
 
     @Query(value = "SELECT * FROM Bonds WHERE bond_maturity_date > ?1 AND bond_maturity_date < ?2", nativeQuery = true)
     List<Bond> findBondsInMaturityTimeframe(LocalDate startDate, LocalDate endDate);
+
+    @Query(value = "SELECT * FROM Bonds WHERE book_id = ?1", nativeQuery = true)
+    List<Bond> findBondsbyBookIDForUser(int bookId);
 }

@@ -71,7 +71,8 @@ public class BondsApiController {
     }
 
     @GetMapping("/users/{user_id}/books/{book_name}/bonds")
-    public ResponseEntity<List<BondCardDataDto>> getBondsInEachBookForUser(@PathVariable(value = "user_id") Integer user_id, @PathVariable(value = "book_name") String book_name ) {
+    public ResponseEntity<List<BondCardDataDto>> getBondsInEachBookForUser(@PathVariable(value = "user_id") Integer user_id,
+                                                                           @PathVariable(value = "book_name") String book_name ) {
         logger.info("BondsApiController::Retrieving bonds for each book");
         List<BondCardDataDto> result = userService.getBondsInSpecificBookForUser(user_id, book_name);
         return ResponseEntity.ok().body(result);
