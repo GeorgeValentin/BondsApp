@@ -10,10 +10,12 @@ import Typography from '@mui/material/Typography';
 
 import './BondCard.css';
 
-const BondCard = (props) => {
+const BondCard = ({ bondInfo }) => {
+  const { cusip, isin, issuerName, clientName, bondMaturityDate } = bondInfo;
+
   return (
     <Fragment>
-      <Card sx={{ maxWidth: 300, gap: 2 }}>
+      <Card className='card-container' sx={{ width: 350 }}>
         <CardMedia
           sx={{ marginX: 'auto' }}
           className='card-media-image'
@@ -21,17 +23,29 @@ const BondCard = (props) => {
           title='Active Bond'
         />
         <CardContent>
-          <Typography gutterBottom variant='h5' component='div'>
-            Lizard
+          <Typography
+            sx={{ fontSize: 15 }}
+            gutterBottom
+            variant='h5'
+            component='div'
+            className='centered-text'
+            id='card-title'
+          >
+            {issuerName}
           </Typography>
-          <Typography variant='body2' color='text.secondary'>
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
-          </Typography>
+          <Typography
+            variant='body2'
+            color='text.secondary'
+            className='centered-text'
+          ></Typography>
         </CardContent>
-        <CardActions>
-          <Button size='small'>Share</Button>
-          <Button size='small'>Learn More</Button>
+        <CardActions className='card-btns-container'>
+          <Button className='card-btn' size='small'>
+            Other Stuff
+          </Button>
+          <Button className='card-btn' size='small'>
+            Learn More
+          </Button>
         </CardActions>
       </Card>
     </Fragment>

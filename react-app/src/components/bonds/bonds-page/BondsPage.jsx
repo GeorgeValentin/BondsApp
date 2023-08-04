@@ -18,18 +18,17 @@ const BondsPage = () => {
       }
     };
 
-    // Call named function
     getActiveBonds();
   }, []);
-
-  console.log(activeBonds);
 
   return (
     <Fragment>
       <Menu />
       <div className='card-list-container'>
         {activeBonds.map((bond, index) => (
-          <BondCard key={index}>{bond.issuerName}</BondCard>
+          <BondCard bondInfo={bond} key={index}>
+            {bond.issuerName}
+          </BondCard>
         ))}
       </div>
     </Fragment>
