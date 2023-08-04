@@ -4,15 +4,19 @@ import com.db.grad.javaapi.model.Bond;
 import com.db.grad.javaapi.model.Client;
 import com.db.grad.javaapi.model.Issuer;
 
+import java.util.Date;
+
 public class BondCardDataDto {
     private String cusip;
     private String isin;
     private String issuerName;
     private String clientName;
+    private Date bondMaturityDate;
 
     public BondCardDataDto(Bond bond) {
         this.cusip = bond.getCusip();
         this.isin = bond.getIsin();
+        this.bondMaturityDate = bond.getBondMaturityDate();
 
         Client client = bond.getClient();
         if(client != null) {
@@ -24,6 +28,14 @@ public class BondCardDataDto {
         if(issuer != null) {
             this.issuerName = issuer.getIssuerName();
         }
+    }
+
+    public Date getBondMaturityDate() {
+        return bondMaturityDate;
+    }
+
+    public void setBondMaturityDate(Date bondMaturityDate) {
+        this.bondMaturityDate = bondMaturityDate;
     }
 
     public String getCusip() {
