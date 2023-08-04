@@ -23,28 +23,12 @@ public class LoginController {
 
     @PostMapping("/register")
     public ResponseEntity<User> registerUser(@RequestBody Credentials credentials) {
-
-        // check if a user with that email already exists
-        if (userService.isUserAlreadyRegistered(credentials.getEmail())) {
-            throw new UserAlreadyExistsException("User with this email already exists");
-        }
-
-        User savedUser = userService.saveUser(credentials);
-
-        return ResponseEntity.ok().body(savedUser);
+        return ResponseEntity.ok().body(userService.registerUser(credentials));
     }
 
     @PostMapping("/login")
     public ResponseEntity<User> loginUser(@RequestBody Credentials credentials) {
-
-        // check if a user with that email already exists
-        if (!userService.isUserAlreadyRegistered(credentials.getEmail())) {
-            throw new UserDoesNotExistException("Register first.");
-        }
-
-        User savedUser = userService.loginUser(credentials);
-
-        return ResponseEntity.ok().body(savedUser);
+        return ResponseEntity.ok().body(userService.loginUser(credentials));
     }
 
 }
