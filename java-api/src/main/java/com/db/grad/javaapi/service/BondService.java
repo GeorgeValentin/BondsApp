@@ -3,16 +3,17 @@ package com.db.grad.javaapi.service;
 import com.db.grad.javaapi.model.Bond;
 import com.db.grad.javaapi.repository.BondsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BondService implements IBondService {
 
     @Autowired
     private BondsRepository bondsRepository;
+
     @Override
     public List<Bond> getAllBonds() {
         return bondsRepository.findAll();
@@ -37,4 +38,10 @@ public class BondService implements IBondService {
     public long getNoOfBonds() {
         return 0;
     }
+
+    @Override
+    public Optional<Bond> getBondsById(int uniqueId) {
+        return bondsRepository.findById(uniqueId);
+    }
+
 }
