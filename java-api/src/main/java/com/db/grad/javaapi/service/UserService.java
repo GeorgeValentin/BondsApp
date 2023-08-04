@@ -9,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import static com.db.grad.javaapi.constants.Constants.MATURITY_TIMEFRAME_IN_DAYS;
 import static com.db.grad.javaapi.constants.Constants.WEEKEND_DAYS;
@@ -25,15 +27,23 @@ public class UserService implements IUserService{
         return usersRepository.findBooksNamesByUserID(user_id);
     }
 
-    public Optional<List<Book>> getBooksforUserID(int user_id) {
+    public List<Book> getBooksforUserID(int user_id) {
         return usersRepository.findBooksByUserID(user_id);
     }
 
-    public Optional<List<BondCardDataDto>> getBondsInEachBookForUser(int user_id, int book_id) {
-        List<Book> books = getBooksforUserID(user_id).get();
+    public List<BondCardDataDto> getBondsInSpecificBookForUser(int user_id, String book_name) {
+        List<Book> books = getBooksforUserID(user_id);
+        List<Bond> bonds = new ArrayList<Bond>();
         for (Book book:books){
-
+            if (book.getBookName().equals(book_name)){
+                bonds = usersRepository.findBondsbyBookIDForUser(book.getBookId());
+                break;
+            }
         }
-        return usersRepository.findBondsbyBookIDForUser(book_id);
+        List<BondCardDataDto> bondsToReturn = bonds.stream()
+                .map(BondCardDataDto::new)
+                .collect(Collectors.toList());
+
+        return bondsToReturn;
     }
 }

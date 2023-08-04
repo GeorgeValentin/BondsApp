@@ -16,10 +16,10 @@ public interface UsersRepository extends JpaRepository<User, Integer> {
     @Query(value = "SELECT book_name FROM Books WHERE user_id = ?1", nativeQuery = true)
     Optional<List<String>> findBooksNamesByUserID(int userId);
 
-    @Query(value = "SELECT * FROM Books WHERE user_id = ?1", nativeQuery = true)
-    Optional<List<Book>> findBooksByUserID(int userId);
+    @Query(value = "SELECT * FROM Books b WHERE b.user_id = ?1", nativeQuery = true)
+    List<Book> findBooksByUserID(int userId);
 
-    @Query(value = "SELECT * FROM Bonds WHERE book_id = ?2 FROM Books WHERE user_id = ?1", nativeQuery = true)
-    Optional<List<BondCardDataDto>> findBondsbyBookIDForUser(userId, bookId);
+    @Query(value = "SELECT * FROM Bonds WHERE book_id = ?1", nativeQuery = true)
+    List<Bond> findBondsbyBookIDForUser(int bookId);
 
 }

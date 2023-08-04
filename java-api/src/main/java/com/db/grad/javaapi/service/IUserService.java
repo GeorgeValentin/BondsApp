@@ -9,7 +9,6 @@ public interface IUserService {
 
      Optional<List<String>> getBooksNamesforUserID(int user_id);
 
-    Optional<List<BondCardDataDto>> getBondsInEachBookForUser(int user_id, int book_id);
-
+    List<BondCardDataDto> getBondsInSpecificBookForUser(int user_id, String book_name);
 
 }
