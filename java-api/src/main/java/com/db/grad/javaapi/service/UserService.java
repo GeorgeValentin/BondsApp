@@ -28,10 +28,19 @@ public class UserService {
             throw new InvalidUserException("User email or/and password cannot be empty.");
         }
 
-        User savedUser = new User(userToSave.getEmail());
+        User savedUser = new User(userToSave.getEmail(), userToSave.getPassword());
 
         userRepository.save(savedUser);
 
         return savedUser;
+    }
+
+    public User loginUser (Credentials credentials) {
+        User existingUser = userRepository.getUserByUserEmail(credentials.getEmail());
+        if (existingUser.getPassword().equals(credentials.getPassword())) {
+            return existingUser;
+        } else {
+            throw new InvalidUserException("Password is incorrect.");
+        }
     }
 }

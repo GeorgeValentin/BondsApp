@@ -17,6 +17,9 @@ public class User {
     @Column(name = "user_email")
     private String userEmail;
 
+    @Column(name = "user_password")
+    private String password;
+
     @OneToMany(mappedBy = "user")
     @JsonIgnore
     private Set<Book> books = new HashSet<>();
@@ -28,8 +31,9 @@ public class User {
         this.userEmail = userEmail;
     }
 
-    public User(String userEmail) {
+    public User(String userEmail, String userPassword) {
         this.userEmail = userEmail;
+        this.password = userPassword;
     }
 
     public int getUserId() {
@@ -46,6 +50,14 @@ public class User {
 
     public void setUserEmail(String userEmail) {
         this.userEmail = userEmail;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override

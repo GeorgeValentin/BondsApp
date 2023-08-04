@@ -2,6 +2,7 @@ package com.db.grad.javaapi.controller;
 
 import com.db.grad.javaapi.dtos.Credentials;
 import com.db.grad.javaapi.exception.UserAlreadyExistsException;
+import com.db.grad.javaapi.exception.UserDoesNotExistException;
 import com.db.grad.javaapi.model.User;
 import com.db.grad.javaapi.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,19 @@ public class LoginController {
         }
 
         User savedUser = userService.saveUser(credentials);
+
+        return ResponseEntity.ok().body(savedUser);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<User> loginUser(@RequestBody Credentials credentials) {
+
+        // check if a user with that email already exists
+        if (!userService.isUserAlreadyRegistered(credentials.getEmail())) {
+            throw new UserDoesNotExistException("Register first.");
+        }
+
+        User savedUser = userService.loginUser(credentials);
 
         return ResponseEntity.ok().body(savedUser);
     }
