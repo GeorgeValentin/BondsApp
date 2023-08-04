@@ -2,10 +2,9 @@ import { Fragment, useEffect, useState } from 'react';
 import { findActiveBonds } from '../../../services/BondServices';
 import BondCard from '../bond-card/BondCard';
 
-import './BondsPage.css';
-import Menu from '../../menu/Menu';
+import './MainPage.css';
 
-const BondsPage = () => {
+const MainPage = () => {
   const [activeBonds, setActiveBonds] = useState([]);
 
   useEffect(() => {
@@ -23,7 +22,6 @@ const BondsPage = () => {
 
   return (
     <Fragment>
-      <Menu />
       <div className='card-list-container'>
         {activeBonds.map((bond, index) => (
           <BondCard bondInfo={bond} key={index}>
@@ -35,4 +33,4 @@ const BondsPage = () => {
   );
 };
 
-export default BondsPage;
+export default MainPage;
