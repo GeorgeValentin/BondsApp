@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import BondsPage from './components/bonds/BondsPage';
+import BondsPage from './components/bonds/bonds-page/BondsPage';
 import { Route, Routes } from 'react-router-dom';
 
 const App = () => {
