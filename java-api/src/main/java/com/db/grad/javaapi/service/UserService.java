@@ -55,11 +55,11 @@ public class UserService implements IUserService{
 
         return bondsToReturn;
       
-      }
-      
-      public boolean isUserAlreadyRegistered(String email) {
-        return usersRepository.existsByUserEmail(email);
     }
+      
+     public boolean isUserAlreadyRegistered(String email) {
+        return usersRepository.existsByUserEmail(email);
+     }
 
     private boolean isUserDataInvalid(Credentials userToSave) {
         return userToSave == null || StringUtils.isNullOrEmpty(userToSave.getEmail())
