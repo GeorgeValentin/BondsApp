@@ -13,6 +13,9 @@ import com.db.grad.javaapi.repository.BooksRepository;
 import com.db.grad.javaapi.repository.UsersRepository;
 import org.h2.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -21,7 +24,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class UserService implements IUserService{
+public class UserService implements IUserService, UserDetailsService {
 
     @Autowired
     private UsersRepository usersRepository;
@@ -95,5 +98,20 @@ public class UserService implements IUserService{
         } else {
             throw new InvalidUserException("Password is incorrect.");
         }
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        com.db.grad.javaapi.model.User foundUser = usersRepository.getUserByUserEmail(username);
+
+        if (foundUser == null) {
+            throw new UserDoesNotExistException("Register first");
+        }
+
+        return org.springframework.security.core.userdetails.User.builder()
+                .username(foundUser.getUserEmail())
+                .password(foundUser.getPassword()) // You might want to hash and verify passwords properly
+                .roles("USER") // Assign roles as needed
+                .build();
     }
 }
