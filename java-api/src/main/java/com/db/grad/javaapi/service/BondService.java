@@ -1,5 +1,6 @@
 package com.db.grad.javaapi.service;
 
+import com.db.grad.javaapi.dtos.ActiveBondDataDto;
 import com.db.grad.javaapi.dtos.BondCardDataDto;
 import com.db.grad.javaapi.model.Bond;
 import com.db.grad.javaapi.repository.BondsRepository;
@@ -32,8 +33,14 @@ public class BondService implements IBondService {
     }
 
     @Override
-    public List<Bond> getActiveBonds() {
-        return bondsRepository.findBondsByIsActiveIsTrue();
+    public List<ActiveBondDataDto> getActiveBonds() {
+        List<Bond> allBonds = bondsRepository.findBondsByIsActiveIsTrue();
+
+        List<ActiveBondDataDto> bondsToReturn = allBonds.stream()
+                .map(elem -> new ActiveBondDataDto(elem, elem.isActive()))
+                .collect(Collectors.toList());
+
+        return bondsToReturn;
     }
 
     @Override

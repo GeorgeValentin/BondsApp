@@ -1,5 +1,6 @@
 package com.db.grad.javaapi.controller;
 
+import com.db.grad.javaapi.dtos.ActiveBondDataDto;
 import com.db.grad.javaapi.dtos.BondCardDataDto;
 import com.db.grad.javaapi.model.Bond;
 import com.db.grad.javaapi.model.Book;
@@ -30,7 +31,7 @@ public class BondsApiController {
     private UserService userService;
 
     @GetMapping("/activeBonds")
-    public ResponseEntity<List<Bond>> getActiveBonds() {
+    public ResponseEntity<List<ActiveBondDataDto>> getActiveBonds() {
         return ResponseEntity.ok().body(bondService.getActiveBonds());
     }
 

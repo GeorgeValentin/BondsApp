@@ -1,0 +1,33 @@
+.card-container {
+  padding-top: 1rem;
+  position: relative;
+}
+
+.card-media-image {
+  height: 5rem;
+  width: 5rem;
+}
+
+#card-title {
+  height: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+#bond-card-body {
+  margin-bottom: 3.5rem;
+}
+
+.card-btns-container {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  bottom: 0;
+  width: 90%;
+  margin-left: 1rem;
+}
+
+.card-btn {
+  width: 40%;
+}
