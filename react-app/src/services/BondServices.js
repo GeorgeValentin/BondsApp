@@ -29,3 +29,8 @@ export const register = (reqBody) => {
   const activeBond = axios.post(`${hostNameUrl}/register`, reqBody);
   return activeBond;
 };
+
+export const findMaturityBonds = (userId) => {
+  const maturityBonds = axios.get(`${hostNameUrl}/users/${userId}/bonds/maturity`);
+  return maturityBonds;
+};
