@@ -5,6 +5,7 @@ import MainPage from './components/main-page/MainPage';
 import BondPage from './components/bonds/bond-page/BondPage';
 import NoMatch from './components/error/NoMatch';
 import Menu from './components/menu/Menu';
+import RegisterPage from './components/register/RegistePage';
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
       <Menu />
       <Routes>
         <Route path='/' element={<MainPage />} />
+        <Route path='register' element={<RegisterPage />} />
         <Route path='/bond/:bondId' element={<BondPage />} />
         <Route path='*' element={<NoMatch />} />
       </Routes>
