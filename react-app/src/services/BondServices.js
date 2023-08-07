@@ -23,6 +23,7 @@ export const findBondsOfABookOfAUser = async (userId, bookName) => {
 };
 
 export const login = async (reqBody) => {
+  // console.log(reqBody);
   const activeBond = await axios.post(`${hostNameUrl}/login`, reqBody);
   return activeBond;
 };

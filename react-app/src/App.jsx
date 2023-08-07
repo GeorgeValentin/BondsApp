@@ -5,7 +5,7 @@ import MainPage from './components/main-page/MainPage';
 import BondPage from './components/bonds/bond-page/BondPage';
 import NoMatch from './components/error/NoMatch';
 import Menu from './components/menu/Menu';
-import RegisterPage from './components/register/RegistePage';
+import RegisterPage from './components/register/RegisterPage';
 
 const App = () => {
   return (
