@@ -17,10 +17,7 @@ const RegisterPage = () => {
     console.log('Submitting the form...');
     console.log('Form Data:', formData);
 
-    const response = await register({
-      email: formData.email,
-      password: formData.password,
-    });
+    const response = await register(formData);
     console.log(response);
 
     setFormData({
