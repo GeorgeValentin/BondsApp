@@ -4,19 +4,6 @@ import com.db.grad.javaapi.model.Book;
 
 import java.util.List;
 
-public class BookService implements IBookService {
-    @Override
-    public List<Book> getAllBooks() {
-        return null;
-    }
+public class BookService {
 
-    @Override
-    public Book addBooks(Book book) {
-        return null;
     }
-
-    @Override
-    public long getNoOfBooks() {
-        return 0;
-    }
-}

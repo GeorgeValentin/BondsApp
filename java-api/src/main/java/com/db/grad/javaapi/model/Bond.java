@@ -54,6 +54,20 @@ public class Bond {
 
     public Bond(){}
 
+    public Bond(int bondId, boolean isActive, Book book) {
+        this.bondId = bondId;
+        this.isActive = isActive;
+        this.book = book;
+    }
+
+    public Bond(int bondId, String cusip, String isin, Date bondMaturityDate, boolean isActive) {
+        this.bondId = bondId;
+        this.cusip = cusip;
+        this.isin = isin;
+        this.bondMaturityDate = bondMaturityDate;
+        this.isActive = isActive;
+    }
+
     public Bond(int bondId, String cusip, String isin, int faceValue, Date bondMaturityDate, float couponPercent, String bondCurrency, String bondType, String redemptionStatus, boolean isActive, Date tradeSettlementDate) {
         this.bondId = bondId;
         this.cusip = cusip;
