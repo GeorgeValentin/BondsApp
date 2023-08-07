@@ -10,7 +10,7 @@ const MainPage = () => {
   useEffect(() => {
     const getActiveBonds = async () => {
       try {
-        const res = await findActiveBonds();
+        const res = await findActiveBonds(1);
         setActiveBonds(res.data);
       } catch (err) {
         console.log(`The error ${err} occured when fetching the bonds`);
@@ -24,7 +24,7 @@ const MainPage = () => {
     <Fragment>
       <div className='card-list-container'>
         {activeBonds.map((bond, index) => (
-          <BondCard bondInfo={bond} key={index}/>
+          <BondCard bondInfo={bond} key={index} />
         ))}
       </div>
     </Fragment>
