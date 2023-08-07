@@ -8,8 +8,8 @@ export const findActiveBonds = async (userId) => {
   return activeBonds;
 };
 
-export const findBondOfUser = async (userId, bondId) => {
-  const activeBond = await axios.get(
+export const findBondOfUser = (userId, bondId) => {
+  const activeBond = axios.get(
     `${hostNameUrl}/users/${userId}/bonds/${bondId}`
   );
   return activeBond;
@@ -23,7 +23,6 @@ export const findBondsOfABookOfAUser = async (userId, bookName) => {
 };
 
 export const login = async (reqBody) => {
-  // console.log(reqBody);
   const activeBond = await axios.post(`${hostNameUrl}/login`, reqBody);
   return activeBond;
 };
