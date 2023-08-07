@@ -17,8 +17,11 @@ public class User {
     @Column(name = "user_email")
     private String userEmail;
 
-    @Column(name = "user_password")
-    private String password;
+    @Column(name = "user_password_hash")
+    private String userPasswordHash;
+
+    @Column(name = "user_password_salt")
+    private String userPasswordSalt;
 
     @OneToMany(mappedBy = "user")
     @JsonIgnore
@@ -26,14 +29,21 @@ public class User {
 
     public User(){}
 
-    public User(int userId, String userEmail) {
+//    public User(int userId, String userEmail) {
+//        this.userId = userId;
+//        this.userEmail = userEmail;
+//    }
+    public User(int userId, String userEmail, String userPasswordHash, String userPasswordSalt) {
         this.userId = userId;
         this.userEmail = userEmail;
+        this.userPasswordHash = userPasswordHash;
+        this.userPasswordSalt = userPasswordSalt;
     }
 
-    public User(String userEmail, String userPassword) {
+    public User(String userEmail, String userPasswordHash, String userPasswordSalt) {
         this.userEmail = userEmail;
-        this.password = userPassword;
+        this.userPasswordHash = userPasswordHash;
+        this.userPasswordSalt = userPasswordSalt;
     }
 
     public int getUserId() {
@@ -52,12 +62,20 @@ public class User {
         this.userEmail = userEmail;
     }
 
-    public String getPassword() {
-        return password;
+    public String getUserPasswordHash() {
+        return userPasswordHash;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setUserPasswordHash(String userPasswordHash) {
+        this.userPasswordHash = userPasswordHash;
+    }
+
+    public String getUserPasswordSalt() {
+        return userPasswordSalt;
+    }
+
+    public void setUserPasswordSalt(String userPasswordSalt) {
+        this.userPasswordSalt = userPasswordSalt;
     }
 
     @Override
@@ -65,6 +83,8 @@ public class User {
         return "User{" +
                 "userId=" + userId +
                 ", userEmail='" + userEmail + '\'' +
+                ", userPasswordHash='" + userPasswordHash + '\'' +
+                ", userPasswordSalt='" + userPasswordSalt + '\'' +
                 '}';
     }
 }

@@ -15,9 +15,16 @@ import org.h2.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import javax.crypto.Cipher;
+import javax.crypto.SecretKey;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.KeySpec;
+import java.util.*;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -60,7 +67,44 @@ public class UserService implements IUserService{
         return bondsToReturn;
       
     }
-      
+    public List<String> NewHashPasswordAndSalt(String password){
+        SecureRandom random = new SecureRandom();
+        String salt = "1";
+        KeySpec spec = new PBEKeySpec(password.toCharArray(), salt.getBytes(), 65536, 128);
+        SecretKeyFactory f = null;
+        byte[] hash;
+        try {
+            f = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
+            hash = f.generateSecret(spec).getEncoded();
+            Base64.Encoder enc = Base64.getEncoder();
+
+            List<String> encryptedData = new ArrayList<String>();
+            encryptedData.add(enc.encodeToString(hash));
+            //encryptedData.add(enc.encodeToString(salt.getBytes()));
+
+            return encryptedData;
+        } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public String HashPasswordSecurityCheck(String password, String salt){
+        KeySpec spec = new PBEKeySpec(password.toCharArray(), salt.getBytes(), 65536, 128);
+        SecretKeyFactory f = null;
+        byte[] hash;
+        try {
+            f = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
+            hash = f.generateSecret(spec).getEncoded();
+            Base64.Encoder enc = Base64.getEncoder();
+            String hashedPassword = enc.encodeToString(hash);
+            return hashedPassword;
+        } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
      public boolean isUserAlreadyRegistered(String email) {
         return usersRepository.existsByUserEmail(email);
      }
@@ -80,7 +124,8 @@ public class UserService implements IUserService{
             throw new InvalidUserException("User email or/and password cannot be empty.");
         }
 
-        User savedUser = new User(userToSave.getEmail(), userToSave.getPassword());
+        List<String> encryptedData =  NewHashPasswordAndSalt(userToSave.getPassword());
+        User savedUser = new User(userToSave.getEmail(), encryptedData.get(0), "1");
         usersRepository.save(savedUser);
 
         return savedUser;
@@ -93,8 +138,12 @@ public class UserService implements IUserService{
         }
 
         User existingUser = usersRepository.getUserByUserEmail(credentials.getEmail());
+        String passwordHash = existingUser.getUserPasswordHash();
+        //String passwordSalt = existingUser.getUserPasswordSalt();
 
-        if (existingUser.getPassword().equals(credentials.getPassword())) {
+        String SCHashedPassword = HashPasswordSecurityCheck(credentials.getPassword(), "1");
+
+        if (passwordHash.equals(SCHashedPassword)) {
             return existingUser;
         } else {
             throw new InvalidUserException("Password is incorrect.");
