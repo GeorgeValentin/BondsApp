@@ -11,7 +11,7 @@ public interface IBondService {
 
     List<BondCardDataDto> getAllBonds();
 
-    List<ActiveBondDataDto> getActiveBonds(Integer userId);
+    List<ActiveBondDataDto> getActiveBonds(int userId);
 
     Optional<Bond> getBondsById(int userId, int bondId);
 

@@ -39,7 +39,7 @@ public class BondService implements IBondService {
     }
 
     @Override
-    public List<ActiveBondDataDto> getActiveBonds(Integer userId) {
+    public List<ActiveBondDataDto> getActiveBonds(int userId) {
 
         if (!userService.existsUserById(userId)) {
             throw new UserDoesNotExistException("The user does not exist");

@@ -9,16 +9,14 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin("http://localhost:3000")
 public class BondsApiController {
 
     public static final Logger logger = LogManager.getLogger(BondsApiController.class);
@@ -30,7 +28,7 @@ public class BondsApiController {
     private UserService userService;
 
     @GetMapping("/users/{user_id}/activeBonds")
-    public ResponseEntity<List<ActiveBondDataDto>> getActiveBonds(@PathVariable(value = "user_id") Integer userId) {
+    public ResponseEntity<List<ActiveBondDataDto>> getActiveBonds(@PathVariable(value = "user_id") int userId) {
         return ResponseEntity.ok().body(bondService.getActiveBonds(userId));
     }
 
