@@ -62,9 +62,9 @@ const BondCard = ({ bondInfo }) => {
           </div>
         </CardContent>
         <CardActions className='card-btns-container'>
-          <Button className='card-btn' size='small'>
+          {/* <Button className='card-btn' size='small'>
             Other Stuff
-          </Button>
+          </Button> */}
           <Button className='card-btn' size='small'>
             Learn More
           </Button>
