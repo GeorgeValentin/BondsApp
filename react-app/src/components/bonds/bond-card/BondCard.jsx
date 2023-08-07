@@ -11,10 +11,10 @@ import { useNavigate } from 'react-router-dom';
 import './BondCard.css';
 
 const BondCard = ({ bondInfo }) => {
-  const { cusip, isin, issuerName, clientName, bondMaturityDate } = bondInfo;
+  const { bondId, cusip, isin, issuerName, clientName, bondMaturityDate } = bondInfo;
   const navigate = useNavigate()
   const handleNavigate = () => {
-    navigate (`/bond/${}`)
+    navigate (`/bond/${bondId}`)
   }
   const parseDate = (dateAsString) => {
     const date = new Date(dateAsString);
