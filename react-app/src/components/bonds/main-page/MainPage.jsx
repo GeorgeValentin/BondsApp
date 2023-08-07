@@ -24,9 +24,7 @@ const MainPage = () => {
     <Fragment>
       <div className='card-list-container'>
         {activeBonds.map((bond, index) => (
-          <BondCard bondInfo={bond} key={index}>
-            {bond.issuerName}
-          </BondCard>
+          <BondCard bondInfo={bond} key={index}/>
         ))}
       </div>
     </Fragment>

@@ -7,12 +7,15 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-
+import { useNavigate } from 'react-router-dom';
 import './BondCard.css';
 
 const BondCard = ({ bondInfo }) => {
   const { cusip, isin, issuerName, clientName, bondMaturityDate } = bondInfo;
-
+  const navigate = useNavigate()
+  const handleNavigate = () => {
+    navigate (`/bond/${}`)
+  }
   const parseDate = (dateAsString) => {
     const date = new Date(dateAsString);
     return `${date.toLocaleDateString()}`;
@@ -65,7 +68,9 @@ const BondCard = ({ bondInfo }) => {
           {/* <Button className='card-btn' size='small'>
             Other Stuff
           </Button> */}
-          <Button className='card-btn' size='small'>
+          <Button className='card-btn' size='small' onClick={ handleNavigate
+
+          }>
             Learn More
           </Button>
         </CardActions>
