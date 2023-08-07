@@ -16,18 +16,18 @@ const MaturityBondsPage = () => {
 
     getMaturityBonds();
   }, []);
-  console.log(maturityBonds);
+
   if (maturityBonds === null) {
     return <div>Loading...</div>;
   }
-  console.log(maturityBonds);
+
   return (
     <Fragment>
       <div>Some Other Page here!</div>
       <div>These are bonds that reach maturity:</div>
       {maturityBonds.map((maturityBond, index) => {
         return (
-          <div>
+          <div key={index}>
             <div>bond ID:</div>
             <div>{maturityBond.bondId}</div>,<div>{maturityBond.cusip}</div>,
             <div>{maturityBond.isin}</div>,<div>{maturityBond.issuerName}</div>,
