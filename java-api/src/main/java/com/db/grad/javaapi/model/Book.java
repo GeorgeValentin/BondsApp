@@ -47,6 +47,14 @@ public class Book {
         this.bookName = bookName;
     }
 
+    public Set<Bond> getBonds() {
+        return bonds;
+    }
+
+    public void setBonds(Set<Bond> bonds) {
+        this.bonds = bonds;
+    }
+
     @Override
     public String toString() {
         return "Book{" +
