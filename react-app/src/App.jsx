@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import MainPage from './components/bonds/main-page/MainPage';
+import MainPage from './components/main-page/MainPage';
 import BondPage from './components/bonds/bond-page/BondPage';
-import SomeOtherPage from './components/bonds/some-other-page/SomeOtherPage';
 import NoMatch from './components/error/NoMatch';
 import Menu from './components/menu/Menu';
+import RegisterPage from './components/register/RegisterPage';
 
 const App = () => {
   return (
@@ -13,8 +13,8 @@ const App = () => {
       <Menu />
       <Routes>
         <Route path='/' element={<MainPage />} />
+        <Route path='register' element={<RegisterPage />} />
         <Route path='/bond/:bondId' element={<BondPage />} />
-        <Route path='someOtherPage' element={<SomeOtherPage />} />
         <Route path='*' element={<NoMatch />} />
       </Routes>
     </Fragment>

@@ -1,8 +1,7 @@
-import { Fragment, useState, useEffect} from 'react';
+import { Fragment, useState, useEffect } from 'react';
 import { findMaturityBonds } from '../../../services/BondServices';
 
-
-const SomeOtherPage = () => {
+const MaturityBondsPage = () => {
   const [maturityBonds, setMaturityBonds] = useState([]);
 
   useEffect(() => {
@@ -17,31 +16,27 @@ const SomeOtherPage = () => {
 
     getMaturityBonds();
   }, []);
-  console.log(maturityBonds)
-  if (maturityBonds===null){
-    return <div>Loading...</div>
+  console.log(maturityBonds);
+  if (maturityBonds === null) {
+    return <div>Loading...</div>;
   }
- console.log(maturityBonds)
+  console.log(maturityBonds);
   return (
     <Fragment>
       <div>Some Other Page here!</div>
       <div>These are bonds that reach maturity:</div>
-      {maturityBonds.map((maturityBond, index)=> {
-        return(
+      {maturityBonds.map((maturityBond, index) => {
+        return (
           <div>
             <div>bond ID:</div>
-        <div>{maturityBond.bondId}</div>,
-        <div>{maturityBond.cusip}</div>,
-        <div>{maturityBond.isin}</div>,
-        <div>{maturityBond.issuerName}</div>,
-        <div>{maturityBond.clientName}</div>
-        </div>
-        )
-      }
-        
-      )}
+            <div>{maturityBond.bondId}</div>,<div>{maturityBond.cusip}</div>,
+            <div>{maturityBond.isin}</div>,<div>{maturityBond.issuerName}</div>,
+            <div>{maturityBond.clientName}</div>
+          </div>
+        );
+      })}
     </Fragment>
   );
 };
 
-export default SomeOtherPage;
+export default MaturityBondsPage;

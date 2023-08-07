@@ -18,7 +18,7 @@ const BondPage = () => {
 
     getActiveBond();
   }, [bondId]);
-  console.log(activeBond);
+
   if (activeBond === null) {
     return <div>Loading...</div>;
   }
@@ -37,9 +37,6 @@ const BondPage = () => {
       <div>{activeBond.faceValue}</div>
       <div>{activeBond.tradeSettlementDate}</div>
       <div>{activeBond.redemptionStatus}</div>
-      <div>{}</div>
-      <div>{}</div>
-      <div>{}</div>
     </Fragment>
   );
 };
