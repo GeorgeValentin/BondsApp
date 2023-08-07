@@ -1,32 +1,34 @@
 import { hostNameUrl } from '../config/apiConfig';
 import axios from 'axios';
 
-export const findActiveBonds = (userId) => {
-  const activeBonds = axios.get(`${hostNameUrl}/users/${userId}/activeBonds`);
+export const findActiveBonds = async (userId) => {
+  const activeBonds = await axios.get(
+    `${hostNameUrl}/users/${userId}/activeBonds`
+  );
   return activeBonds;
 };
 
-export const findBondOfUser = (userId, bondId) => {
-  const activeBond = axios.get(
+export const findBondOfUser = async (userId, bondId) => {
+  const activeBond = await axios.get(
     `${hostNameUrl}/users/${userId}/bonds/${bondId}`
   );
   return activeBond;
 };
 
-export const findBondsOfABookOfAUser = (userId, bookName) => {
-  const activeBond = axios.get(
+export const findBondsOfABookOfAUser = async (userId, bookName) => {
+  const activeBond = await axios.get(
     `${hostNameUrl}/users/${userId}/books/${bookName}/bonds`
   );
   return activeBond;
 };
 
-export const login = (reqBody) => {
-  const activeBond = axios.post(`${hostNameUrl}/login`, reqBody);
+export const login = async (reqBody) => {
+  const activeBond = await axios.post(`${hostNameUrl}/login`, reqBody);
   return activeBond;
 };
 
-export const register = (reqBody) => {
-  const activeBond = axios.post(`${hostNameUrl}/register`, reqBody);
+export const register = async (reqBody) => {
+  const activeBond = await axios.post(`${hostNameUrl}/register`, reqBody);
   return activeBond;
 };
 

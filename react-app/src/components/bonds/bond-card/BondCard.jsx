@@ -11,11 +11,15 @@ import { useNavigate } from 'react-router-dom';
 import './BondCard.css';
 
 const BondCard = ({ bondInfo }) => {
-  const { bondId, cusip, isin, issuerName, clientName, bondMaturityDate } = bondInfo;
-  const navigate = useNavigate()
+  const { bondId, cusip, isin, issuerName, clientName, bondMaturityDate } =
+    bondInfo;
+
+  const navigate = useNavigate();
+
   const handleNavigate = () => {
-    navigate (`/bond/${bondId}`)
-  }
+    navigate(`/bond/${bondId}`);
+  };
+
   const parseDate = (dateAsString) => {
     const date = new Date(dateAsString);
     return `${date.toLocaleDateString()}`;
@@ -68,9 +72,7 @@ const BondCard = ({ bondInfo }) => {
           {/* <Button className='card-btn' size='small'>
             Other Stuff
           </Button> */}
-          <Button className='card-btn' size='small' onClick={ handleNavigate
-
-          }>
+          <Button className='card-btn' size='small' onClick={handleNavigate}>
             Learn More
           </Button>
         </CardActions>
