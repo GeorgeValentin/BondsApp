@@ -12,19 +12,19 @@ const Menu = () => {
           <img className='menu-logo' src={Logo} alt='db-logo-img' />
         </Link>
 
-        <div className='d-flex justify-content-end gap-3'>
+        <div className='d-flex justify-content-end gap-2'>
           <NavLink
-            className='d-flex align-items-center btn btn-primary menu-btn'
-            to='/bond'
+            className='d-flex align-items-center btn btn-dark menu-btn border border-dark border-2 fw-bold'
+            to='/register'
           >
-            Bond
+            Register
           </NavLink>
 
           <NavLink
-            className='d-flex align-items-center btn btn-primary menu-btn'
-            to='/someOtherPage'
+            className='d-flex align-items-center btn btn-outline-dark menu-btn border border-dark border-2 fw-bold'
+            to='/login'
           >
-            Some Other Page{' '}
+            Login
           </NavLink>
         </div>
       </div>

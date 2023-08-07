@@ -18,7 +18,7 @@ const BondPage = () => {
 
     getActiveBond();
   }, [bondId]);
-  console.log(activeBond);
+
   if (activeBond === null) {
     return <div>Loading...</div>;
   }
