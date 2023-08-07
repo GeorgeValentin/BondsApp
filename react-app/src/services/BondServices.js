@@ -34,6 +34,8 @@ export const register = async (reqBody) => {
 };
 
 export const findMaturityBonds = (userId) => {
-  const maturityBonds = axios.get(`${hostNameUrl}/users/${userId}/bonds/maturity`);
+  const maturityBonds = axios.get(
+    `${hostNameUrl}/users/${userId}/bonds/maturity`
+  );
   return maturityBonds;
 };
