@@ -6,6 +6,7 @@ import BondPage from './components/bonds/bond-page/BondPage';
 import NoMatch from './components/error/NoMatch';
 import Menu from './components/menu/Menu';
 import RegisterPage from './components/register/RegisterPage';
+import MaturityBondsPage from './components/bonds/maturiy-bonds-page/MaturityBondsPage';
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Route path='/' element={<MainPage />} />
         <Route path='register' element={<RegisterPage />} />
         <Route path='/bond/:bondId' element={<BondPage />} />
+        <Route path='/bondsAtMaturity' element={<MaturityBondsPage />} />
         <Route path='*' element={<NoMatch />} />
       </Routes>
     </Fragment>
