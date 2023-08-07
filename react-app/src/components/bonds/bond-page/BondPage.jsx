@@ -37,9 +37,6 @@ const BondPage = () => {
       <div>{activeBond.faceValue}</div>
       <div>{activeBond.tradeSettlementDate}</div>
       <div>{activeBond.redemptionStatus}</div>
-      <div>{}</div>
-      <div>{}</div>
-      <div>{}</div>
     </Fragment>
   );
 };

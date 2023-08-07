@@ -14,6 +14,7 @@ const BondCard = ({ bondInfo }) => {
   const { bondId, cusip, isin, issuerName, clientName, bondMaturityDate } =
     bondInfo;
 
+  // console.log(bondId);
   const navigate = useNavigate();
 
   const handleNavigate = () => {
