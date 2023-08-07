@@ -13,7 +13,7 @@ const App = () => {
       <Menu />
       <Routes>
         <Route path='/' element={<MainPage />} />
-        <Route path='bond' element={<BondPage />} />
+        <Route path='/bond/:bondId' element={<BondPage />} />
         <Route path='someOtherPage' element={<SomeOtherPage />} />
         <Route path='*' element={<NoMatch />} />
       </Routes>
