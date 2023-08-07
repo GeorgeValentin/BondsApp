@@ -7,6 +7,7 @@ import com.db.grad.javaapi.model.Issuer;
 import java.util.Date;
 
 public class BondCardDataDto {
+    private Integer bondId;
     private String cusip;
     private String isin;
     private String issuerName;
@@ -14,6 +15,7 @@ public class BondCardDataDto {
     private Date bondMaturityDate;
 
     public BondCardDataDto(Bond bond) {
+        this.bondId = bond.getBondId();
         this.cusip = bond.getCusip();
         this.isin = bond.getIsin();
         this.bondMaturityDate = bond.getBondMaturityDate();
@@ -28,6 +30,14 @@ public class BondCardDataDto {
         if(issuer != null) {
             this.issuerName = issuer.getIssuerName();
         }
+    }
+
+    public Integer getBondId() {
+        return bondId;
+    }
+
+    public void setBondId(Integer bondId) {
+        this.bondId = bondId;
     }
 
     public Date getBondMaturityDate() {
