@@ -1,4 +1,5 @@
 import { Fragment, useState } from 'react';
+import { register } from '../../services/BondServices';
 
 const RegisterPage = () => {
   const [formData, setFormData] = useState({
@@ -10,16 +11,21 @@ const RegisterPage = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
 
     console.log('Submitting the form...');
     console.log('Form Data:', formData);
 
+    const response = await register({
+      email: formData.email,
+      password: formData.password,
+    });
+    console.log(response);
+
     setFormData({
-      name: '',
       email: '',
-      message: '',
+      password: '',
     });
   };
 
