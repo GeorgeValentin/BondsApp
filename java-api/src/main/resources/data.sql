@@ -7,10 +7,10 @@ VALUES ('BNPParibasIssu 4,37% Microsoft Corp (USD)'),
 ('TEMASEK FINL I LTD GLOBAL MEDIUM TERM NTS BOOK ENTRY REG S'),
 ('First Norway Alpha Kl.IV');
 
-INSERT INTO users (user_email)
+INSERT INTO users (user_email, user_password_hash, user_password_salt)
 VALUES
-('user1@gmail.com'),
-('user2@gmail.com');
+('user1@gmail.com', 'vyfKPsSYvEVWXNZc6JvfAA==', '1'),
+('user2@gmail.com', 'vyfKPsSYvEVWXNZc6JvfAA==', '1');
 
 --INSERT INTO users (user_email, user_password)
 --VALUES

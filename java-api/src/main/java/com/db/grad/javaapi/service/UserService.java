@@ -15,6 +15,8 @@ import org.h2.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.crypto.Cipher;
+import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import java.security.NoSuchAlgorithmException;
@@ -63,54 +65,42 @@ public class UserService implements IUserService{
     }
     public List<String> NewHashPasswordAndSalt(String password){
         SecureRandom random = new SecureRandom();
-        byte[] salt = new byte[16];
-        random.nextBytes(salt);
-        KeySpec spec = new PBEKeySpec(password.toCharArray(), salt, 65536, 128);
+        String salt = "1";
+        KeySpec spec = new PBEKeySpec(password.toCharArray(), salt.getBytes(), 65536, 128);
         SecretKeyFactory f = null;
         byte[] hash;
         try {
             f = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
-        }
-//        String hash = f.generateSecret(spec).getEncoded();
-//        byte[] hashByte = hash.getBytes();
-        try {
             hash = f.generateSecret(spec).getEncoded();
-        } catch (InvalidKeySpecException e) {
+            Base64.Encoder enc = Base64.getEncoder();
+
+            List<String> encryptedData = new ArrayList<String>();
+            encryptedData.add(enc.encodeToString(hash));
+            //encryptedData.add(enc.encodeToString(salt.getBytes()));
+
+            return encryptedData;
+        } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
             throw new RuntimeException(e);
         }
-        Base64.Encoder enc = Base64.getEncoder();
 
-        List<String> encryptedData = new ArrayList<String>();
-        encryptedData.add(enc.encodeToString(hash));
-        encryptedData.add(enc.encodeToString(salt));
-
-        return encryptedData;
     }
 
-    public String HashPasswordSecurityCheck(String password, byte[] salt){
-        KeySpec spec = new PBEKeySpec(password.toCharArray(), salt, 65536, 128);
+    public String HashPasswordSecurityCheck(String password, String salt){
+        KeySpec spec = new PBEKeySpec(password.toCharArray(), salt.getBytes(), 65536, 128);
         SecretKeyFactory f = null;
         byte[] hash;
         try {
             f = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
-        }
-        try {
             hash = f.generateSecret(spec).getEncoded();
-        } catch (InvalidKeySpecException e) {
+            Base64.Encoder enc = Base64.getEncoder();
+            String hashedPassword = enc.encodeToString(hash);
+            return hashedPassword;
+        } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
             throw new RuntimeException(e);
         }
-        Base64.Encoder enc = Base64.getEncoder();
-        String hashedPassword = enc.encodeToString(hash);
 
-        return hashedPassword;
     }
 
-
-      
      public boolean isUserAlreadyRegistered(String email) {
         return usersRepository.existsByUserEmail(email);
      }
@@ -131,7 +121,7 @@ public class UserService implements IUserService{
         }
 
         List<String> encryptedData =  NewHashPasswordAndSalt(userToSave.getPassword());
-        User savedUser = new User(userToSave.getEmail(), encryptedData.get(0), encryptedData.get(1));
+        User savedUser = new User(userToSave.getEmail(), encryptedData.get(0), "1");
         usersRepository.save(savedUser);
 
         return savedUser;
@@ -145,9 +135,9 @@ public class UserService implements IUserService{
 
         User existingUser = usersRepository.getUserByUserEmail(credentials.getEmail());
         String passwordHash = existingUser.getUserPasswordHash();
-        byte[] passwordSalt = existingUser.getUserPasswordSalt().getBytes();
+        //String passwordSalt = existingUser.getUserPasswordSalt();
 
-        String SCHashedPassword = HashPasswordSecurityCheck(credentials.getPassword(), passwordSalt);
+        String SCHashedPassword = HashPasswordSecurityCheck(credentials.getPassword(), "1");
 
         if (passwordHash.equals(SCHashedPassword)) {
             return existingUser;
