@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useState } from 'react';
-import { findActiveBonds } from '../../../services/BondServices';
-import BondCard from '../bond-card/BondCard';
+import { findActiveBonds } from '../../services/BondServices';
+import BondCard from '../bonds/bond-card/BondCard';
 
 import './MainPage.css';
 
@@ -24,7 +24,7 @@ const MainPage = () => {
     <Fragment>
       <div className='card-list-container'>
         {activeBonds.map((bond, index) => (
-          <BondCard bondInfo={bond} key={index}/>
+          <BondCard bondInfo={bond} key={index} />
         ))}
       </div>
     </Fragment>
