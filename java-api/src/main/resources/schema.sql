@@ -17,7 +17,9 @@ CREATE TABLE if not exists clients (
 
 CREATE TABLE if not exists users(
     user_id INT AUTO_INCREMENT PRIMARY KEY,
-    user_email VARCHAR(250) NOT NULL
+    user_email VARCHAR(250) NOT NULL,
+    user_password_hash VARCHAR(250),
+    user_password_salt VARCHAR(250)
 );
 
 CREATE TABLE if not exists books (
