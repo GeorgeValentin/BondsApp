@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { NavLink, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import MainPage from './components/bonds/main-page/MainPage';
 import BondPage from './components/bonds/bond-page/BondPage';
