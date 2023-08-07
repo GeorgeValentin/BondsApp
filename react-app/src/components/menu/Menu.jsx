@@ -17,6 +17,13 @@ const Menu = () => {
             className='d-flex align-items-center btn btn-dark menu-btn border border-dark border-2 fw-bold'
             to='/register'
           >
+            Bonds at Maturity
+          </NavLink>
+
+          <NavLink
+            className='d-flex align-items-center btn btn-dark menu-btn border border-dark border-2 fw-bold'
+            to='/register'
+          >
             Register
           </NavLink>
 
