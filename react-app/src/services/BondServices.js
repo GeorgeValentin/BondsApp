@@ -8,8 +8,8 @@ export const findActiveBonds = async (userId) => {
   return activeBonds;
 };
 
-export const findBondOfUser = (userId, bondId) => {
-  const activeBond = axios.get(
+export const findBondOfUser = async (userId, bondId) => {
+  const activeBond = await axios.get(
     `${hostNameUrl}/users/${userId}/bonds/${bondId}`
   );
   return activeBond;
