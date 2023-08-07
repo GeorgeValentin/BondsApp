@@ -32,6 +32,10 @@ public class UserService implements IUserService{
     @Autowired
     private BondsRepository bondsRepository;
 
+    public boolean existsUserById (int userId) {
+        return usersRepository.existsById(userId);
+    }
+
     public Optional<List<String>> getBooksNamesforUserID(int user_id) {
         return usersRepository.findBooksNamesByUserID(user_id);
     }

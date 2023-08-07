@@ -3,26 +3,25 @@ package com.db.grad.javaapi.service;
 import com.db.grad.javaapi.dtos.ActiveBondDataDto;
 import com.db.grad.javaapi.dtos.BondCardDataDto;
 import com.db.grad.javaapi.model.Bond;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface IBondService {
 
-    public List<BondCardDataDto> getAllBonds();
+    List<BondCardDataDto> getAllBonds();
 
-    public List<ActiveBondDataDto> getActiveBonds();
+    List<ActiveBondDataDto> getActiveBonds(Integer userId);
+
+    Optional<Bond> getBondsById(int userId, int bondId);
 
     List<Bond> getInactiveBonds();
 
-    List<BondCardDataDto> getBondsInMaturityTimeframe();
+    List<BondCardDataDto> getBondsInMaturityTimeframe(Integer userId);
 
     public Bond addBond(Bond bond);
 
     public long getNoOfBonds();
-
-    public Optional getBondsById(int uniqueId);
 
 //    public boolean removeBond(long uniqueId);
 //
