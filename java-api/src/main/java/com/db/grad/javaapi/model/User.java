@@ -29,10 +29,10 @@ public class User {
 
     public User(){}
 
-//    public User(int userId, String userEmail) {
-//        this.userId = userId;
-//        this.userEmail = userEmail;
-//    }
+    public User(int userId, String userEmail) {
+        this.userId = userId;
+        this.userEmail = userEmail;
+    }
     public User(int userId, String userEmail, String userPasswordHash, String userPasswordSalt) {
         this.userId = userId;
         this.userEmail = userEmail;

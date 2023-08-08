@@ -26,10 +26,18 @@ public class Book {
 
     public Book(){}
 
+    public Book(int bookId,String bookName, User user) {
+        this.bookId = bookId;
+        this.bookName = bookName;
+        this.user = user;
+    }
+
     public Book(int bookId, String bookName) {
         this.bookId = bookId;
         this.bookName = bookName;
     }
+
+
 
     public int getBookId() {
         return bookId;
