@@ -27,7 +27,7 @@ class BondServiceTest {
 
     private Issuer issuer;
 
-    private BondCardDataDto bondDto;
+//    private BondCardDataDto bondDto;
 
     @InjectMocks
     public BondService bondservice;
@@ -55,9 +55,9 @@ class BondServiceTest {
 
     @Test
     void getAllBonds() {
-        List<BondCardDataDto> bondCardDataDtos = new ArrayList<>();
-        bondCardDataDtos.add(bondDto);
-        when(bondservice.getAllBonds()).thenReturn(bondCardDataDtos);
+        List<Bond> bondCardDataDtos = new ArrayList<>();
+        bondCardDataDtos.add(bond);
+        when(bondsRepository.findAll()).thenReturn(bondCardDataDtos);
 
         List<BondCardDataDto> actualResult = bondservice.getAllBonds();
 

@@ -57,7 +57,7 @@ class UserServiceTest {
     }
 
     @Test
-    void getBooksNamesforUserID() {
+    void getBooksNamesForUserID() {
         List<String> book_name = new ArrayList<>();
         book_name.add(book.getBookName());
         when(usersRepository.findBooksNamesByUserID(1)).thenReturn(Optional.of(book_name));
@@ -97,11 +97,12 @@ class UserServiceTest {
     }
     @Test
     void isUserAlreadyRegistered() {
+        when(usersRepository.existsByUserEmail(user.getUserEmail())).thenReturn(true);
         boolean actualResult = userservice.isUserAlreadyRegistered("user1@gmail.com");
         assertEquals(true, actualResult);
+
+        when(usersRepository.existsByUserEmail(user.getUserEmail() + "wrong")).thenReturn(false);
+        boolean actualResult2 = userservice.isUserAlreadyRegistered("user1@gmail.comwrong");
+        assertEquals(false, actualResult2);
     }
-
-
-
-
 }
