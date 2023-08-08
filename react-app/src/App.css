@@ -42,9 +42,10 @@
 }
 
 .bond-page-trigger-button {
-  margin-top: 30px;
-  margin-left: 55px;
-  background-color: rebeccapurple;
+  margin-top: 30px !important;
+  margin-left: 55px !important;
+  background-color: #30336b !important;
+  color: white !important;
 }
 
 .bond-page-table {
@@ -56,7 +57,7 @@
   margin-top: 30px;
   margin-bottom: 30px;
   margin-left: 55px;
-  color: blue;
+  color: #30336b;
   font-weight: bolder;
   font-size: larger;
 }
