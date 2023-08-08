@@ -4,25 +4,30 @@
     import '../../main-page/MainPage.css';
     import '../../../App.css'
 
-    const MaturityBondsPage = () => {
-      const [maturityBonds, setMaturityBonds] = useState([]);
+import './MaturityBondsPage.css';
+import { getUserIdFromLocalStorage } from '../../utils/helpers';
 
-      useEffect(() => {
-        const getMaturityBonds = async () => {
-          try {
-            const res = await findMaturityBonds(1);
-            setMaturityBonds(res.data);
-          } catch (err) {
-            console.log(`The error ${err} occured when fetching the bonds`);
-          }
-        };
+const MaturityBondsPage = () => {
+  const [maturityBonds, setMaturityBonds] = useState([]);
 
-        getMaturityBonds();
-      }, []);
+  useEffect(() => {
+    const getMaturityBonds = async () => {
+      try {
+        const userId = getUserIdFromLocalStorage();
+        const res = await findMaturityBonds(userId);
 
-      if (maturityBonds === null) {
-        return <div>Loading...</div>;
+        setMaturityBonds(res.data);
+      } catch (err) {
+        console.log(`The error ${err} occured when fetching the bonds`);
       }
+    };
+
+    getMaturityBonds();
+  }, []);
+
+  if (maturityBonds === null) {
+    return <div>Loading...</div>;
+  }
 
       const currentDate = new Date();
 
@@ -30,19 +35,19 @@
         const maturityDate = new Date(bond.bondMaturityDate);
         return maturityDate < currentDate;
       });
-      
+
       const presentMaturityBonds = maturityBonds.filter(bond => {
         const maturityDate = new Date(bond.bondMaturityDate);
         return maturityDate >= currentDate && maturityDate <= currentDate;
       });
-      
+
       const futureMaturityBonds = maturityBonds.filter(bond => {
         const maturityDate = new Date(bond.bondMaturityDate);
         return maturityDate > currentDate;
       });
 
       return (
-        <div>
+    <div className='bonds-at-maturity-container'>
           <div className='text-separator-past'>These bonds reached maturity in the last 5 days:</div>
             <Fragment>
               <div className='card-list-container'>
@@ -66,8 +71,8 @@
                   ))
                 ) : (
                   <p>No bonds with maturity dates today.</p>
-              )}     
-              </div>       
+              )}
+              </div>
             </Fragment>
 
           <div className='text-separator-future'>These bonds reach maturity in the future:</div>
@@ -83,32 +88,7 @@
               </div>
             </Fragment>
         </div>
-
-        // <Fragment>
-        //   <div className='card-list-container'>
-        //     {maturityBonds.map((bond, index) => (
-        //       <BondCard bondInfo={bond} key={index} />
-        //     ))}
-        //   </div>
-        // </Fragment>
-        // <Fragment>
-        //   <div>Some Other Page here!</div>
-        //   <div >These are bonds that reach maturity:</div>
-        //   {maturityBonds.map((maturityBond, index) => {
-        //     return (
-        //       <BondCard className='card-list-container'
-        //         bondInfo={maturityBond} key={index}>
-        //       </BondCard>
-        //       // <div key={index}>
-        //       //   <div>bond ID:</div>
-        //       //   <div>{maturityBond.bondId}</div>,<div>{maturityBond.cusip}</div>,
-        //       //   <div>{maturityBond.isin}</div>,<div>{maturityBond.issuerName}</div>,
-        //       //   <div>{maturityBond.clientName}</div>
-        //       // </div>
-        //     );
-        //   })}
-        // </Fragment>
       );
     };
 
-    export default MaturityBondsPage;
+export default MaturityBondsPage;
