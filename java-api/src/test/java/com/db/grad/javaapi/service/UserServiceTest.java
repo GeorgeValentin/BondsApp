@@ -1,6 +1,7 @@
 package com.db.grad.javaapi.service;
 
 import com.db.grad.javaapi.dtos.BondCardDataDto;
+import com.db.grad.javaapi.dtos.Credentials;
 import com.db.grad.javaapi.model.Bond;
 import com.db.grad.javaapi.model.Book;
 import com.db.grad.javaapi.model.User;
@@ -29,6 +30,8 @@ class UserServiceTest {
 
     private BondCardDataDto bondDto;
 
+    private Credentials credentials;
+
     @InjectMocks
     public UserService userservice;
 
@@ -46,9 +49,10 @@ class UserServiceTest {
 
         MockitoAnnotations.initMocks(this);
 
-        user = new User(1,"user1@gmail.com", "password");
+        user = new User(1,"user1@gmail.com");
         book = new Book(1,"trading_book_1", user);
         bond = new Bond(1,true, book);
+        credentials = new Credentials("user1@gmail.com", "password");
 
     }
 
@@ -84,6 +88,8 @@ class UserServiceTest {
 
     @Test
     void registerUser() {
+        User actualuser = userservice.registerUser(credentials);
+        assertEquals(user.getUserEmail(), actualuser.getUserEmail());
     }
 
     @Test

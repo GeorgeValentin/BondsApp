@@ -15,7 +15,7 @@ public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "client_id")
-    private Long clientId;
+    private int clientId;
 
     @Column(name = "bond_holder", nullable = false, length = 250)
     private String bondHolder;
@@ -31,17 +31,17 @@ public class Client {
     public Client() {
 
     }
-    public Client(Long clientId, String bondHolder, Issuer issuer) {
+    public Client(int clientId, String bondHolder, Issuer issuer) {
         this.clientId = clientId;
         this.bondHolder = bondHolder;
         this.issuer = issuer;
     }
 
-    public Long getClientId() {
+    public int getClientId() {
         return clientId;
     }
 
-    public void setClientId(Long clientId) {
+    public void setClientId(int clientId) {
         this.clientId = clientId;
     }
 
