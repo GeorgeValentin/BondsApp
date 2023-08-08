@@ -10,6 +10,11 @@ import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
 import './BondCard.css';
 
+export const parseDate = (dateAsString) => {
+  const date = new Date(dateAsString);
+  return `${date.toLocaleDateString()}`;
+};
+
 const BondCard = ({ bondInfo }) => {
   const { bondId, cusip, isin, issuerName, clientName, bondMaturityDate } =
     bondInfo;
@@ -19,11 +24,6 @@ const BondCard = ({ bondInfo }) => {
 
   const handleNavigate = () => {
     navigate(`/bond/${bondId}`);
-  };
-
-  const parseDate = (dateAsString) => {
-    const date = new Date(dateAsString);
-    return `${date.toLocaleDateString()}`;
   };
 
   return (
@@ -78,7 +78,9 @@ const BondCard = ({ bondInfo }) => {
           </Button>
         </CardActions>
       </Card>
+
     </Fragment>
+    
   );
 };
 

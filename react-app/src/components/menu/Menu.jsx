@@ -26,6 +26,14 @@ const Menu = () => {
           >
             Login
           </NavLink>
+
+          <NavLink
+            className='d-flex align-items-center btn btn-outline-dark menu-btn border border-dark border-2 fw-bold'
+            to='bondsAtMaturity'
+          >
+            Bonds maturity
+          </NavLink>
+
         </div>
       </div>
     </Fragment>

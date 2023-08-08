@@ -40,3 +40,46 @@
 .centered-text {
   text-align: center;
 }
+
+.bond-page-trigger-button {
+  margin-top: 30px;
+  margin-left: 55px;
+  background-color: rebeccapurple;
+}
+
+.bond-page-table {
+  margin-left: 50px;
+  align-items: center;
+}
+
+.bond-data-header {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 55px;
+  color: blue;
+  font-weight: bolder;
+  font-size: larger;
+}
+
+.text-separator-past {
+  text-align: center;
+  color: darkred;
+  font-size: larger;
+  font-weight: bolder;
+}
+
+.text-separator-present {
+  text-align: center;
+  color: peru;
+  font-size: larger;
+  font-weight: bolder;
+}
+.text-separator-future {
+  text-align: center;
+  color: green;
+  font-size: larger;
+  font-weight: bolder;
+}
+
+
+
