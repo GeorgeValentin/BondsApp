@@ -8,18 +8,19 @@ import { getUserIdFromLocalStorage } from '../utils/helpers';
 
 const MainPage = () => {
   const [activeBonds, setActiveBonds] = useState([]);
-  const [userId, setUserId] = useState(0);
+  const [userId, setUserId] = useState(null);
 
   useEffect(() => {
     const getActiveBonds = async () => {
       try {
         const loggedInUserId = getUserIdFromLocalStorage();
 
-        if (userId !== null || userId !== undefined) setUserId(loggedInUserId);
+        setUserId(loggedInUserId);
 
-        const res = await findActiveBonds(userId);
-
-        setActiveBonds(res.data);
+        if (userId !== null) {
+          const res = await findActiveBonds(userId);
+          setActiveBonds(res.data);
+        }
       } catch (err) {
         console.log(`The error ${err} occured when fetching the bonds`);
       }
