@@ -1,0 +1,10 @@
+.footer-container {
+  position: sticky;
+  bottom: 0;
+  background-color: #4834d4;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: bold;
+}

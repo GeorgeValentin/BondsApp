@@ -19,7 +19,6 @@ const BondCard = ({ bondInfo }) => {
   const { bondId, cusip, isin, issuerName, clientName, bondMaturityDate } =
     bondInfo;
 
-  // console.log(bondId);
   const navigate = useNavigate();
 
   const handleNavigate = () => {
@@ -70,17 +69,12 @@ const BondCard = ({ bondInfo }) => {
           </div>
         </CardContent>
         <CardActions className='card-btns-container'>
-          {/* <Button className='card-btn' size='small'>
-            Other Stuff
-          </Button> */}
           <Button className='card-btn' size='small' onClick={handleNavigate}>
             Learn More
           </Button>
         </CardActions>
       </Card>
-
     </Fragment>
-    
   );
 };
 

@@ -1,0 +1,26 @@
+.register-page-container {
+  /* height: 86vh; */
+  min-height: 88.1vh;
+}
+
+.sign-up-btn {
+  background-color: #686de0;
+  border: 3px solid #686de0;
+  border-radius: 0.3rem;
+  padding: 0.4rem;
+  color: #fff;
+  font-weight: bold;
+  width: 10rem;
+}
+
+.register-inputs-container {
+  width: 23rem;
+}
+
+.register-input-container {
+  width: 90%;
+}
+
+.register-input-elem {
+  width: 15rem;
+}

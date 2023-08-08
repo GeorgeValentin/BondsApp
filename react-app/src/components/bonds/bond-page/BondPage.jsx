@@ -6,6 +6,9 @@ import '../../../App.css';
 import { parseDate } from '../bond-card/BondCard';
 import Button from '@mui/material/Button';
 
+import './BondPage.css';
+import { getUserIdFromLocalStorage } from '../../utils/helpers';
+
 const BondPage = () => {
   const { bondId } = useParams();
   const [activeBond, setActiveBond] = useState(null);
@@ -13,7 +16,9 @@ const BondPage = () => {
   useEffect(() => {
     const getActiveBond = async () => {
       try {
-        const res = await findBondOfUser(1, bondId);
+        const userId = getUserIdFromLocalStorage();
+        const res = await findBondOfUser(userId, bondId);
+
         setActiveBond(res.data);
       } catch (err) {
         console.log(`The error ${err} occured when fetching the bonds`);
@@ -29,6 +34,8 @@ const BondPage = () => {
 
   return (
     <Fragment>
+        <div className='bond-page-container'>
+
       <div className='bond-data-header'>Bond data</div>
 
       <MDBTable className='bond-page-table' hover>
@@ -53,7 +60,7 @@ const BondPage = () => {
         </tr>
         <tr>
           <td>Maturity date</td>
-          
+
           <td>{parseDate(activeBond.bondMaturityDate)}</td>
         </tr>
         <tr>
@@ -80,27 +87,16 @@ const BondPage = () => {
           <td>Redemption status</td>
           <td>{activeBond.redemptionStatus}</td>
         </tr>
-        
+
       </MDBTableBody>
     </MDBTable>
 
     <Button className='bond-page-trigger-button'>
       Trigger for redemption
     </Button>
+    </div>
+</Fragment>
 
-
-      {/* <div>{bondId}</div>
-      {activeBond.client && <div>{activeBond.client.bondHolder}</div>}
-      {activeBond.client.issuer && (
-        <div>{activeBond.client.issuer.issuerName}</div>
-      )}
-      <div>{activeBond.couponPercent}</div>
-      <div>{activeBond.cusip}</div>
-      <div>{activeBond.isin}</div>
-      <div>{activeBond.faceValue}</div>
-      <div>{activeBond.tradeSettlementDate}</div>
-      <div>{activeBond.redemptionStatus}</div> */}
-    </Fragment>
   );
 };
 

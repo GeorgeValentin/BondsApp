@@ -1,4 +1,5 @@
 .card-list-container {
+  min-height: 88.1vh;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -6,4 +7,8 @@
   column-gap: 1.5rem;
   row-gap: 2rem;
   padding: 2.5rem;
+}
+
+.access-restricted-logo {
+  width: 15rem;
 }

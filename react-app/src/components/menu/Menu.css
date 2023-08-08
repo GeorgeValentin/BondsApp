@@ -1,7 +1,27 @@
+.menu-container {
+  background-color: #686de0;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.menu-logo:hover {
+  background-color: #686de0;
+}
+
+.menu-brand-name:hover {
+  background-color: #686de0;
+}
+
 .menu-logo {
-  width: 3rem;
+  width: 2.5rem;
+}
+
+.menu-brand-name {
+  text-decoration: none !important;
+  color: #fff;
 }
 
 .menu-btn {
-  height: 2.5rem;
+  color: #686de0 !important;
 }
