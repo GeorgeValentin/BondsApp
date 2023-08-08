@@ -47,7 +47,6 @@ const MaturityBondsPage = () => {
   });
 
   return (
-    // <div className='bonds-at-maturity-container'>
     <div>
       <div className='text-separator-past'>
         These bonds reached maturity in the last 5 days:
