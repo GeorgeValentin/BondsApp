@@ -25,9 +25,13 @@ const Menu = () => {
           <div className='text-light fw-bold menu-btn'>Bondify</div>
         </NavLink>
 
-        <div className='d-flex justify-content-end align-items-center gap-2'>
+        <div className='d-flex justify-content-end align-items-center gap-3'>
           {getLoggedInStatusFromLocalStorage() === true ? (
             <Fragment>
+              <div className='text-light fw-bold fs-6 fst-italic'>
+                Welcome, {localStorage.getItem('userEmail')}
+              </div>
+
               <NavLink
                 className='d-flex align-items-center btn btn-light border border-light border-3 fw-bold menu-btn'
                 to='/bondsAtMaturity'
