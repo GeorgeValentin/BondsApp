@@ -24,8 +24,6 @@ const App = () => {
           <Route path='/bondsAtMaturity' element={<MaturityBondsPage />} />
           <Route path='*' element={<NoMatch />} />
         </Routes>
-
-        <Footer />
       </div>
     </Fragment>
   );

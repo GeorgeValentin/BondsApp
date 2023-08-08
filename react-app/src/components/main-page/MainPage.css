@@ -1,5 +1,5 @@
 .card-list-container {
-  min-height: 88.1vh;
+  /* min-height: 88.1vh; */
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -11,4 +11,9 @@
 
 .access-restricted-logo {
   width: 15rem;
+}
+
+.restricted-container {
+  position: absolute;
+  top: 163%;
 }

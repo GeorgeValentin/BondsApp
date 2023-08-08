@@ -33,7 +33,7 @@ const MainPage = () => {
     <Fragment>
       <div className='card-list-container'>
         {activeBonds.length === 0 ? (
-          <div className='d-flex justify-content-center align-items-center flex-column'>
+          <div className='d-flex justify-content-center align-items-center flex-column restricted-container'>
             <img
               className='access-restricted-logo'
               src={AccessRestrictedLogo}
